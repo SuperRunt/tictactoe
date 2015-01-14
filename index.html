@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>TicTacToe</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/app.css">
+</head>
+<body>
+
+<div class="content">
+    <h1>TicTacToe</h1>
+    <div class="setup" data-bind="visible: showSetup()">
+        <div class="row">
+            <h2>Choose Game Board Size</h2>
+            <div class="col-lg-12 col-xs-12">
+                <!-- Setting up the size of the board game -->
+                <input class="cells" data-bind="textInput: cellsWide"> X <span data-bind="text: cellsWide"></span>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Who's playing?</h2>
+            <div data-bind="template: { name: 'playerTemplate', foreach: players, as: 'player' }"></div>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" data-bind="click: play">Let's Play!</button>
+        </div>
+    </div>
+    <div class="gamedetails" data-bind="visible: showGame()">
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <ul data-bind="foreach: players" class="clearfix">
+                    <li><span data-bind="text: token"></span>: <span data-bind="text: name"></span></li>
+                </ul>
+            </div>
+            <div class="col-lg-12 col-xs-12">The game board size is <span data-bind="text: cellsWide"></span> X <span data-bind="text: cellsWide"></span></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <div id="tictactoe"></div>
+        </div>
+    </div>
+    <div class="row" data-bind="visible: showAlert()">
+        <div class="col-lg-12 col-xs-12" data-bind="template: { name: 'alertTemplate', data: alert }"></div>
+    </div>
+
+</div>
+
+<!-- Templates -->
+
+<!-- Player Setup -->
+<!-- This is where the players decide who gets the x and o -->
+<script type="text/html" id="playerTemplate">
+    <div class="col-lg-6 col-xs-6" data-bind="css: { 'text-right': $index()%2 == 0, 'text-left': $index()%2 != 0 }">
+        <label data-bind="text: token"></label>:
+        <input data-bind="textInput: name" type="text">
+    </div>
+</script>
+<!-- Alert -->
+<!-- I'm using this for a couple different alerts, and giving it a couple different style options depending on what type of alert it is -->
+<script type="text/html" id="alertTemplate">
+    <div class="row">
+        <div class="alert" data-bind="css: { 'alert-success': isSuccess, 'alert-warning': !isSuccess }">
+            <p data-bind="text: message"></p>
+            <div data-bind="foreach: buttons">
+                <button class="btn" data-bind="{css: { 'btn-success': $parent.isSuccess, 'btn-warning': !$parent.isSuccess }, click: action, text: text}"></button>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/javascript" src="javascript/3rdparty/knockout-3.2.0.js"></script>
+<script type="text/javascript" src="javascript/3rdparty/zepto.min.js"></script>
+<script type="text/javascript" src="javascript/helpers.js"></script>
+<script type="text/javascript" src="javascript/models.js"></script>
+<script type="text/javascript" src="javascript/gameViewModel.js"></script>
+<script type="text/javascript" src="javascript/tictactoe.js"></script>
+
+</body>
+</html>
+
+

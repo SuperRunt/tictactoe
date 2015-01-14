@@ -1,0 +1,22 @@
+
+body { padding: 30px;background-color: #eee; }
+h1, h2 { text-align: center; }
+h2 { margin-top: 25px;margin-bottom: 20px;font-size: 25px; }
+button { margin-top: 25px; }
+
+.content { margin: 0 auto;width: 100%;text-align: center; }
+
+.content .setup input.cells { width: 24px;text-align: right; }
+
+.content .gamedetails { padding-top: 10px;padding-bottom: 30px;font-weight: bold; }
+.content .gamedetails ul { list-style: none;margin: 0;padding: 0;display: inline-block; }
+.content .gamedetails ul li { display: block;float: left;margin: 10px 20px; }
+
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.alert { margin-top: 20px;display: inline-block; }
+
+#tictactoe { display: inline-block;font-weight: bold; }
+#tictactoe table { background-color: #fff; }
+
